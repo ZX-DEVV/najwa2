@@ -1,0 +1,563 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Détaillés - WITH YOU CONSULTING</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ... [Styles précédents] ... */
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+         /* Navbar styles */
+         .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background: rgba(46, 204, 113, 0.1);
+        }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 150px 5% 100px;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Services Grid */
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .service-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Section Caractéristiques */
+        .features {
+            background: var(--light-color);
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header {
+                padding: 120px 5% 60px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Style pour les modales */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .detail-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-item i {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .price-info h4 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo - Copie.png" alt="With You Consulting Logo">
+        </div>
+        <div class="nav-links">
+            <a href="c:\Users\USER\Desktop\site2\website.html">Accueil</a>
+            <a href="c:\Users\USER\Desktop\site2\a propos.html">À Propos</a>
+            <a href="c:\Users\USER\Desktop\site2\service.html" style="color: var(--primary-color);">Services</a>
+            <a href="c:\Users\USER\Desktop\site2\histoire.html">Contact</a>
+           
+            
+        </div>
+    </nav>
+
+    <header>
+        <h1>Nos Services</h1>
+        <p>Des solutions sur mesure pour votre réussite</p>
+    </header>
+
+    <div class="services-container">
+        <div class="services-grid">
+            <div class="service-card">
+                <!-- Remplacez le chemin par celui de votre image -->
+                <img src="aefe5022e0517cb0ffa59c78bf7d1186.jpg" alt="Conseil Stratégique" class="service-image">
+                <div class="service-content">
+                    <h3>Conseil Stratégique</h3>
+                    <p>Nous vous accompagnons dans l'élaboration et la mise en œuvre de votre stratégie d'entreprise.</p>
+                    <a href="#" class="service-btn">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <!-- Remplacez le chemin par celui de votre image -->
+                <img src="bb87acc260dfc82bd8c5cfa868df1d51.jpg" alt="Transformation Digitale" class="service-image">
+                <div class="service-content">
+                    <h3>Transformation Digitale</h3>
+                    <p>Accompagnement dans votre transition numérique et l'adoption des nouvelles technologies.</p>
+                    <a href="#" class="service-btn">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <!-- Remplacez le chemin par celui de votre image -->
+                <img src="f4d7f975a7c81bafcece650188dd3853.jpg" alt="Formation" class="service-image">
+                <div class="service-content">
+                    <h3>Formation</h3>
+                    <p>Des programmes de formation adaptés à vos besoins et à votre secteur d'activité.</p>
+                    <a href="#" class="service-btn">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Performance</h3>
+                <p>Optimisation continue de vos processus</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Innovation</h3>
+                <p>Solutions créatives et adaptées</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Expertise</h3>
+                <p>Une équipe de professionnels qualifiés</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3>WITH YOU CONSULTING</h3>
+        <p>Votre partenaire de confiance</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <!-- Modales pour chaque service -->
+    <div id="modal-strategie" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Conseil Stratégique</h2>
+            </div>
+            <div class="modal-body">
+                <p>Notre service de conseil stratégique vous aide à définir et mettre en œuvre une stratégie gagnante pour votre entreprise.</p>
+                
+                <div class="service-details">
+                    <div class="detail-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Analyse de Marché</h3>
+                        <p>Étude approfondie de votre marché et de vos concurrents</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Objectifs</h3>
+                        <p>Définition d'objectifs SMART et KPIs</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-route"></i>
+                        <h3>Plan d'Action</h3>
+                        <p>Élaboration d'un plan d'action détaillé</p>
+                    </div>
+                </div>
+
+                <div class="price-info">
+                    <h4>Forfaits Disponibles</h4>
+                    <p>À partir de 1500€ HT</p>
+                    <p>Accompagnement personnalisé selon vos besoins</p>
+                    <a href="#contact" class="contact-btn">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-digital" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Transformation Digitale</h2>
+            </div>
+            <div class="modal-body">
+                <p>Nous vous accompagnons dans votre transition numérique pour optimiser vos processus et améliorer votre compétitivité.</p>
+                
+                <div class="service-details">
+                    <div class="detail-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Audit Digital</h3>
+                        <p>Évaluation de votre maturité numérique</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Solutions</h3>
+                        <p>Implémentation d'outils numériques adaptés</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-users-cog"></i>
+                        <h3>Formation</h3>
+                        <p>Formation de vos équipes aux nouveaux outils</p>
+                    </div>
+                </div>
+
+                <div class="price-info">
+                    <h4>Forfaits Disponibles</h4>
+                    <p>À partir de 2000€ HT</p>
+                    <p>Solutions sur mesure selon vos besoins</p>
+                    <a href="#contact" class="contact-btn">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-formation" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Formation Professionnelle</h2>
+            </div>
+            <div class="modal-body">
+                <p>Des formations adaptées à vos besoins pour développer les compétences de vos équipes.</p>
+                
+                <div class="service-details">
+                    <div class="detail-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>Formations Sur Mesure</h3>
+                        <p>Programmes adaptés à votre secteur</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Certification</h3>
+                        <p>Formations certifiantes reconnues</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Suivi</h3>
+                        <p>Accompagnement post-formation</p>
+                    </div>
+                </div>
+
+                <div class="price-info">
+                    <h4>Forfaits Disponibles</h4>
+                    <p>À partir de 800€ HT par jour</p>
+                    <p>Groupes de 5 à 15 personnes</p>
+                    <a href="#contact" class="contact-btn">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gestion des modales
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fermeture des modales
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.onclick = function() {
+                this.closest('.modal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Fermeture en cliquant en dehors de la modale
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Modification des boutons "En savoir plus"
+        document.querySelectorAll('.service-btn').forEach((btn, index) => {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                const modalIds = ['modal-strategie', 'modal-digital', 'modal-formation'];
+                openModal(modalIds[index]);
+            }
+        });
+    </script>
+</body>

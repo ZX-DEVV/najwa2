@@ -1,0 +1,425 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - WITH YOU CONSULTING</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f8f9fa;
+        }
+ /* Navbar styles */
+ .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background: rgba(46, 204, 113, 0.1);
+        }
+        /* Header amélioré */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 5% 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,197.3C672,224,768,224,864,208C960,192,1056,160,1152,138.7C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sections améliorées */
+        section {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--dark-color);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Équipe améliorée */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+
+        .team-member h3 {
+            color: var(--dark-color);
+            margin: 1rem 0;
+        }
+
+        /* Valeurs améliorées */
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+
+        .value:hover {
+            transform: translateY(-5px);
+        }
+
+        .value h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Timeline améliorée */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -12px;
+        }
+
+        /* Footer amélioré */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img slogo - Copie.png" alt="With You Consulting Logo">
+        </div>
+        <div class="nav-links">
+            <a href="c:\Users\USER\Desktop\site2\website.html">Accueil</a>
+            <a href="c:\Users\USER\Desktop\site2\a propos.html" style="color: var(--primary-color);">Apropos</a>
+            <a href="c:\Users\USER\Desktop\site2\service.html">Services</a>
+            <a href="c:\Users\USER\Desktop\site2\histoire.html">Contact</a>    
+        </div>
+    </nav>
+    <header>
+        <h1>À Propos de WITH YOU CONSULTING</h1>
+        <p>Votre partenaire dans la transformation digitale</p>
+    </header>
+
+    <div class="content">
+        <section id="histoire">
+            
+        </section>
+
+        <section id="equipe">
+            <h2>Notre Équipe</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="513f63a00960b3c71cca5b20ad84d80d.jpg" alt="CEO">
+                    <h3>Sarah Martin</h3>
+                    <p>Fondatrice & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="ed97179b1a21251a1b4f3c2f03cd9273.jpg" alt="Stratégiste">
+                    <h3>Thomas Dubois</h3>
+                    <p>Directeur Stratégie Digitale</p>
+                </div>
+                <div class="team-member">
+                    <img src="5f8d81d122c527564cbfe787694f9203.jpg" alt="Développeur">
+                    <h3>Lucas Bernard</h3>
+                    <p>Lead Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="83fc15285cbfb4d9080b48c50df3d4b5.jpg" alt="Formation">
+                    <h3>Emma Laurent</h3>
+                    <p>Responsable Formation</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="valeurs">
+            <h2>Nos Valeurs</h2>
+            <div class="values">
+                <div class="value">
+                    <h3><i class="fas fa-lightbulb"></i> Innovation</h3>
+                    <p>Nous repoussons constamment les limites pour offrir des solutions innovantes qui transforment les entreprises.</p>
+                </div>
+                <div class="value">
+                    <h3><i class="fas fa-hands-helping"></i> Collaboration</h3>
+                    <p>Le succès de nos clients est notre priorité. Nous travaillons en étroite collaboration pour atteindre leurs objectifs.</p>
+                </div>
+                <div class="value">
+                    <h3><i class="fas fa-shield-alt"></i> Intégrité</h3>
+                    <p>Nous agissons avec transparence et éthique dans toutes nos relations professionnelles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline">
+            <h2>Notre Parcours</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>2015</strong>
+                    <p>Création de WITH YOU CONSULTING</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>2017</strong>
+                    <p>Premier projet international majeur</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>2019</strong>
+                    <p>Expansion de l'équipe et nouveaux services</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>2022</strong>
+                    <p>Lancement du programme de formation digitale</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 WITH YOU CONSULTING | Tous droits réservés</p>
+    </footer>
+
+    <script>
+        // Animation des sections au scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
